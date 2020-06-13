@@ -8,6 +8,7 @@ import BottomNavigationComponent from "./components/BottomNavigation";
 import { SongProvider } from "./context";
 
 function App() {
+  // Persiapkan nilai awalnya
   const initialState = {
     thumbnailSrc: "",
     songSrc: "",
@@ -16,8 +17,14 @@ function App() {
     trackId: "",
   };
   return (
+    // Kita gunakan context dengan value yang akan digunakan di komponen-komponen
+    // Challenge: Setiap di-refresh, state kita akan kembali ke value. Bagaimana caranya kalau setiap refresh
+    // value state kita masih tetap ada?
+    // Clue: gunakan localStorage dari browser untuk simpan nilai state (tanpa Backend)
     <SongProvider initialSong={initialState}>
+      {/* Kita gunakan Router agar setiap URL yang pengguna buka akan merender halaman yang diinginkan */}
       <Router>
+        {/* Daftar rute (<Route />) yang kita gunakan taruh di <Switch /> */}
         <Switch>
           <Route path="/playing">
             <PlayingPage />
@@ -29,6 +36,7 @@ function App() {
             <HomePage />
           </Route>
         </Switch>
+        {/* Komponen navigasi yang akan digunakan */}
         <BottomNavigationComponent />
       </Router>
     </SongProvider>

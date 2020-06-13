@@ -60,6 +60,8 @@ export default function MediaControlCard({
         />
       </Card>
       <div style={{marginTop: '10px'}}>
+          {/* Kita gunakan <audio /> untuk memainkan musik kita */}
+          {/* Challenge: Bagaimana kalau kita ingin gunakan player custom? */}
         <audio src={songSrc} controls style={{ width: "100%" }} />
       </div>
     </div>
